@@ -1,46 +1,53 @@
-async function getAll(){
+//DOM OBJECTS
+const pokeScreen = document.querySelector('.poke-screen');
+const pokeName = document.querySelector('.poke-name');
+const pokeId = document.querySelector('.poke-id');
+const pokeImage = document.querySelector('.poke-image');
+const pokeFirstType = document.querySelector('.poke-first-type');
+const pokeSecondType = document.querySelector('.poke-second-type');
+const nextPoke = document.querySelector('.poke-btn');
 
-    //fetch data
-    try {
-        const result = await fetch (`https://pokeapi.co/api/v2/pokemon?limit=20/`);
-        const data = await result.json();
-        console.log(data);
 
-        // turn json array into just an array of pokemon names
-        const list = data.results;
-        console.log(list); 
-
-     // when you open the page it chooses a random pokemon from const list
-        let random = list[Math.floor(Math.random() * list.length)]; 
-        console.log(random); 
     
-    // from the random pokemon get url
-        const pokeurl = random.url;
-        console.log(pokeurl);
+
+//get data for all pokemon
+function getAll () {
 
 
-    // fetch poke url to get details on individual pokemon
-       let fetchPokeData = await fetch (pokeurl);
-       let pokeData = await fetchPokeData.json();
-       console.log(pokeData);
-       
-    // once we get data choose what you want to show
-       const pokemon = {
-           name: pokeData.name,
-           id: pokeData.id,
-           image: pokeData.sprites['front_default'],
-    // goes through each pokemon type and puts into a single array. Then converts to a string
-           type: pokeData.types.map(t => t.type.name).join(',')
-          
-       };
-       console.log(pokemon);
+fetch(`https://pokeapi.co/api/v2/pokemon?limit=20`)
+    .then(res => res.json())
+    .then(data => {
         
-    } catch(error) {
-        alert(error);
-    }
+    const results = data['results'];
     
+
+    // when you open the page it chooses a random pokemon from const list
+    let random = results[Math.floor(Math.random() * results.length)]; 
+    console.log(random); 
+
+// from the random pokemon get url
+    let pokeurl = random['url'];
+    console.log(pokeurl);
+
+
+
+
+
+    });
+
 };
 
-
-
 getAll();
+
+
+
+    
+
+    
+
+    
+    
+
+
+
+
