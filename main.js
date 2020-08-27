@@ -14,29 +14,21 @@ nextPoke.addEventListener('click', getAll);
 //get data for all pokemon
 function getAll () {
 
+// create variable for random number generation
+let random = Math.floor(Math.random() * 151);
+console.log(random)
 
-fetch(`https://pokeapi.co/api/v2/pokemon?limit=20`)
-    .then(res => res.json())
-    .then(data => {
-        
-    //destructing used to get data from array
-    const results = data['results'];
-   
+//create url from random number
 
-    // when you open the page it chooses a random pokemon from const list
-    let random = results[Math.floor(Math.random() * results.length)]; 
-  
+let pokeUrl = 'https://pokeapi.co/api/v2/pokemon/' + random;
+console.log(pokeUrl);
 
-// from the random pokemon get url
-    let pokeurl = random['url'];
     
-
-
 //fetch data for individual pokemon
-fetch(pokeurl)
+fetch(pokeUrl)
     .then(res => res.json())
     .then(data => {
-    
+    console.log(data);
         
     //shows data on screen 
     pokeScreen.classList.remove('d-none');
@@ -67,7 +59,7 @@ fetch(pokeurl)
         });
 
 
-    });
+    
 
 };
 
