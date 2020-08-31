@@ -9,61 +9,56 @@ const nextPoke = document.querySelector('.poke-btn');
 
 //ADDING EVENT LISTENERS
 nextPoke.addEventListener('click', getAll);
-    
+ 
 
 //get data for all pokemon
 function getAll () {
 
-// create variable for random number generation
-let random = Math.floor(Math.random() * 151);
-console.log(random);
+    // create variable for random number generation
+    let random = Math.floor(Math.random() * 151);
+   
 
-//create url from random number
-
-let pokeUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
-console.log(pokeUrl);
-
+    //create url from random number
+    let pokeUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
     
-//fetch data for individual pokemon
-fetch(pokeUrl)
-    .then(res => res.json())
-    .then(data => {
-    console.log(data);
+
         
-    //shows data on screen 
-    pokeScreen.classList.remove('d-none');
+    //fetch data for individual pokemon
+    fetch(pokeUrl)
+        .then(res => res.json())
+        .then(data => {
+        
+            
+        //shows data on screen 
+        pokeScreen.classList.remove('d-none');
 
-    //get the data types
-    const dataTypes = data['types'];
-    console.log(dataTypes);
-    const dataFirstType = dataTypes[0];
-    const dataSecondType = dataTypes[1];
-    pokeFirstType.textContent = dataFirstType['type']['name'];
+        //get the data types
+        const dataTypes = data['types'];
+        const dataFirstType = dataTypes[0];
+        const dataSecondType = dataTypes[1];
+        pokeFirstType.textContent = dataFirstType['type']['name'];
 
-    //if there are more than 1 type remove hide class vice versa
-    if(dataSecondType) {
-        pokeSecondType.classList.remove('d-none');
-        pokeSecondType.textContent = dataSecondType['type']['name'];
-    } else {
-        pokeSecondType.classList.add('d-none');
-        pokeSecondType.textContent = '';
-    } 
-    // if there is no image put blank 
-    pokeImage.src = data['sprites']['front_default'] || "";
+        //if there are more than 1 type remove hide class vice versa
+        if(dataSecondType) {
+            pokeSecondType.classList.remove('d-none');
+            pokeSecondType.textContent = dataSecondType['type']['name'];
+        } else {
+            pokeSecondType.classList.add('d-none');
+            pokeSecondType.textContent = '';
+        } 
 
-    pokeName.textContent = data['name'];
+        // if there is no image put blank 
+        pokeImage.src = data['sprites']['front_default'] || "";
 
-    // put # in front of number, convert to string, then add "0" in front of it if less than 100
-    pokeId.textContent = '#' + data['id'].toString().padStart(3, '0');
+        pokeName.textContent = data['name'];
 
-        });
+        // put # in front of number, convert to string, then add "0" in front of it if less than 100
+        pokeId.textContent = '#' + data['id'].toString().padStart(3, '0');
 
-
-    
-
+    });
 };
 
-getAll();
+
 
 
 
