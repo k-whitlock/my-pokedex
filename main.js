@@ -16,11 +16,11 @@ function getAll () {
 
 // create variable for random number generation
 let random = Math.floor(Math.random() * 151);
-console.log(random)
+console.log(random);
 
 //create url from random number
 
-let pokeUrl = 'https://pokeapi.co/api/v2/pokemon/' + random;
+let pokeUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
 console.log(pokeUrl);
 
     
