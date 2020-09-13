@@ -129,6 +129,11 @@ h1  {
 
 /***** BUTTONS *****/
 
+button:focus { 
+    outline:0 !important;
+}
+
+
 .poke-btn {
     height: 75px;
     width: 75px;
@@ -146,6 +151,8 @@ h1  {
 .dpad  {
     color: black;
 }
+
+
 
 
 /****** COLORS *****/
