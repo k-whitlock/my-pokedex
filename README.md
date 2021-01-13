@@ -8,4 +8,4 @@
 # Built With 
 - Bootstrap 4
 # Authors
-- k-whitlock -  solo project
+- k-whitlock -  *solo project*
