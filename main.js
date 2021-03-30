@@ -10,6 +10,10 @@ const nextPoke = document.querySelector('.poke-btn');
 //ADDING EVENT LISTENERS
 nextPoke.addEventListener('click', getAll);
  
+//functions
+const reset = () => {
+    pokeScreen.classList.remove('d-none');
+};
 
 //get data for all pokemon
 function getAll() {
@@ -20,12 +24,12 @@ function getAll() {
 //create url from random number
     let pokeUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
 
-//fetch data for individual pokemon
+//GET request using fetch for data of individual pokemon
     fetch(pokeUrl)
         .then(res => res.json())
         .then(data => {          
-            //shows data on screen 
-            pokeScreen.classList.remove('d-none');
+            //shows data of pokemon on screen 
+            reset();
 
             //get the data types
             const dataTypes = data.types;
