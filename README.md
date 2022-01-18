@@ -7,4 +7,4 @@
 - Bootstrap 4
 - Javascript
 # Authors
-- k-whitlock -  *solo project*
+- k-whitlock 
