@@ -23,7 +23,8 @@ function getAll() {
 
 //create url from random number
     let pokeUrl = `https://pokeapi.co/api/v2/pokemon/${random}`;
-
+    
+    
 //GET request using fetch for data of individual pokemon
     fetch(pokeUrl)
         .then(res => res.json())
